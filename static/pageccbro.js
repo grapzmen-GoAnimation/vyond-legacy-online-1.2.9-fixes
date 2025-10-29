@@ -122,7 +122,7 @@ if (self !== top) {
                     <span class="icon-bar"></span>
                   </button>
                   <a class="navbar-brand" href="/pages/html/ga.vyond.com/yourvideos" title="Vyond">
-                      <img alt="Vyond" src="https://d3v4eglovri8yt.cloudfront.net/static/add8e214e09bd155/go/img/vyond/vyond_logo_legacy.png">
+                      <img alt="Vyond" src="https://web.archive.org/web/20210328224445if_/https://d3v4eglovri8yt.cloudfront.net/static/add8e214e09bd155/go/img/vyond/vyond_logo_legacy.png">
                   </a>
             </div>
            <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -231,3 +231,4 @@ jQuery('#ccbrowser-container').flash({
 		);
 	return true;
 }
+
