@@ -59,9 +59,9 @@ module.exports = function (req, res, url) {
 <meta property="fb:app_id" content="177116303202">
 <meta name="google-site-verification" content="K_niiTfCVi72gwvxK00O4NjsVybMutMUnc-ZnN6HUuA">
 <link rel="canonical" href="https://vyondremastered1.herokuapp.com/yourvideos">
-<link href="https://josephanimate2021.github.io/fonts/1/sailec.css" rel="stylesheet" type="text/css">
-<link href="https://josephanimate2021.github.io/static/55910a7cd204c37c/go/css/common_combined.css.gz.css" rel="stylesheet" type="text/css">
-<link href="https://josephanimate2021.github.io/static/55910a7cd204c37c/go/css/cc.css.gz.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/fonts/1/sailec.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/static/55910a7cd204c37c/go/css/common_combined.css.gz.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/static/55910a7cd204c37c/go/css/cc.css.gz.css" rel="stylesheet" type="text/css">
 <!--[if lt IE 9]>
 <style text="text/css">
 .top-nav.collapse {height: auto;overflow: visible;}
@@ -71,14 +71,14 @@ module.exports = function (req, res, url) {
 var srv_tz_os = -4, view_name = "go", user_cookie_name = "u_info";
 var user_role = 11;
 </script>
-<script src="https://josephanimate2021.github.io/static/55910a7cd204c37c/go/js/common_combined.js.gz.js"></script>
-<script type="text/javascript" src="https://josephanimate2021.github.io/static/55910a7cd204c37c/go/js/../po/goserver_js-en_US.json.gz.json"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/static/55910a7cd204c37c/go/js/common_combined.js.gz.js"></script>
+<script type="text/javascript" src="https://grapzmen-goanimation.github.io/josephanimate2021/static/55910a7cd204c37c/go/js/../po/goserver_js-en_US.json.gz.json"></script>
 <script type="text/javascript">
 var I18N_LANG = 'en_US';
 var GT = new Gettext({'locale_data': json_locale_data});
 </script>
-<script src="https://josephanimate2021.github.io/static/55910a7cd204c37c/go/js/sessionChecker.js.gz.js"></script>
-<script src="https://josephanimate2021.github.io/static/55910a7cd204c37c/go/js/amplitude/go_amp.js.gz.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/static/55910a7cd204c37c/go/js/sessionChecker.js.gz.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/static/55910a7cd204c37c/go/js/amplitude/go_amp.js.gz.js"></script>
 <!-- Vyond Cookie Consent -->
 <script>(function(v,y,o,n){v[n]=v[n]||[];
 var f=y.getElementsByTagName(o)[0],d=y.createElement(o);
@@ -192,7 +192,7 @@ if (self !== top) {
 <script>
 jQuery('#ccbrowser-container').flash({
     id: "ccbrowser",
-    swf: "https://josephanimate2021.github.io/animation/cce25167cb1d3404/cc_browser.swf",
+    swf: "https://grapzmen-goanimation.github.io/josephanimate2021/animation/cce25167cb1d3404/cc_browser.swf",
     height: 1200,
     width: 960,
 
@@ -231,4 +231,3 @@ jQuery('#ccbrowser-container').flash({
 		);
 	return true;
 }
-
