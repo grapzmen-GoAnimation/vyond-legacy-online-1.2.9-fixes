@@ -1,5 +1,4 @@
-const sessions = require('../data/sessions');
-const fUtil = require('../fileUtil');
+const fUtil = require('../misc/file');
 const stuff = require('./info');
 
 function toAttrString(table) {
@@ -24,15 +23,22 @@ module.exports = function (req, res, url) {
 	var attrs, params, title;
 	switch (url.pathname) {
 	case '/videos/': {
-			title = 'Your Animation - Vyond';
+		let presave = query.movieId && query.movieId.startsWith('m') ? query.movieId :
+				`m-${fUtil[query.noAutosave ? 'getNextFileId' : 'fillNextFileId']('movie-', '.xml')}`;
+		title = 'Your Animation - Vyond';
 		attrs = {
 				data: process.env.SWF_URL + '/player.swf',
 				type: 'application/x-shockwave-flash', width: '100%', height: '100%',
 			};
 			params = {
 				flashvars: {
-                                        'apiserver': '/', 'storePath': process.env.STORE_URL + '/<store>', 'ut': 60,
-					'autostart': 1, 'isWide': 1, 'clientThemePath': process.env.CLIENT_URL + '/<client_theme>',
+                                        'bs': 'adam', 'nextUrl': '/', 'movieId': '', 'ut': '60',
+					'isWide': '1', 'presaveId': presave, 'page': '', 
+					'apiserver': '/', 'ctc': 'go', 'tlang': 'en_US',
+					'autostart': '1', 'appCode': 'go', 'isEmbed': '1',
+					'storePath': process.env.STORE_URL + '/<store>', 
+					'clientThemePath': process.env.CLIENT_URL + '/<client_theme>',
+					'animationPath': process.env.SWF_URL + '/',
 				},
 
 				allowScriptAccess: 'always',
@@ -52,7 +58,7 @@ module.exports = function (req, res, url) {
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<link rel="dns-prefetch" href="//josephanimate2021.github.io/">
+<link rel="dns-prefetch" href="//grapzmen-goanimation.github.io/josephanimate2021/">
 
 <script>document.title='${title}'</script>
 
@@ -62,7 +68,7 @@ module.exports = function (req, res, url) {
 <meta name="description" content="Watch the video: Test by Joseph Animate 2021 on GoAnimate.">
 <link rel="canonical" href="https://vyond2018.herokuapp.com/videos/?movieId=m-16">
 <link rel="image_src" href="/pages/html/13801618.jpg">
-<link rel="video_src" href="https://josephanimate2021.github.io/player/swf/m-16">
+<link rel="video_src" href="https://grapzmen-goanimation.github.io/josephanimate2021/player/swf/m-16">
 <meta name="video_height" content="354">
 <meta name="video_width" content="550">
 <meta name="video_type" content="application/x-shockwave-flash">
@@ -74,19 +80,19 @@ module.exports = function (req, res, url) {
 <meta property="og:url" content="https://vyond2018.herokuapp.com/videos/?movieId=m-16">
 <meta property="og:image" content="https://s3.amazonaws.com/fs.goanimate.com/files/thumbnails/movie/876/5682876/13801618L.jpg">
 
-<meta property="og:video" content="https://josephanimate2021.github.io/player/swf/m-16">
+<meta property="og:video" content="https://grapzmen-goanimation.github.io/josephanimate2021/player/swf/m-16">
 <meta property="og:video:height" content="354">
 <meta property="og:video:width" content="550">
 <meta property="og:video:type" content="application/x-shockwave-flash">
 
-<link rel="alternate" type="application/json+oembed" href="https://josephanimate2021.github.io/api/oembed?url=http%3A%2F%2Fgoanimate.com%2Fvideos%2F0-1BF1m2VKQA&amp;format=json">
-<link rel="alternate" type="text/xml+oembed" href="https://josephanimate2021.github.io/api/oembed?url=http%3A%2F%2Fgoanimate.com%2Fvideos%2F0-1BF1m2VKQA&amp;format=xml">
+<link rel="alternate" type="application/json+oembed" href="https://grapzmen-goanimation.github.io/josephanimate2021/api/oembed?url=http%3A%2F%2Fgoanimate.com%2Fvideos%2F0-1BF1m2VKQA&amp;format=json">
+<link rel="alternate" type="text/xml+oembed" href="https://grapzmen-goanimation.github.io/josephanimate2021/api/oembed?url=http%3A%2F%2Fgoanimate.com%2Fvideos%2F0-1BF1m2VKQA&amp;format=xml">
 
 <meta name="twitter:card" content="player">
 <meta name="twitter:title" content="Test - Joseph Animate 2021">
 <meta name="twitter:description" content="Watch the video: Test by Joseph Animate 2021 on GoAnimate.">
 <meta name="twitter:image:src" content="https://s3.amazonaws.com/fs.goanimate.com/files/thumbnails/movie/876/5682876/13801618L.jpg">
-<meta name="twitter:player" content="https://josephanimate2021.github.io/player/embed/m-16">
+<meta name="twitter:player" content="https://grapzmen-goanimation.github.io/josephanimate2021/player/embed/m-16">
 <meta name="twitter:player:height" content="349">
 <meta name="twitter:player:width" content="620">
 
@@ -99,20 +105,20 @@ module.exports = function (req, res, url) {
 <link rel="alternate" href="https://web.archive.org/web/20160123121200/http://feeds.feedburner.com/GoAnimate/WhatsNew" type="application/rss+xml" title="GoAnimate - Recently Released Content">
 <link rel="alternate" href="https://web.archive.org/web/20160123121200/http://feeds.feedburner.com/GoAnimate/MostWatched" type="application/rss+xml" title="GoAnimate - Most Watched">
 
-<link href="https://josephanimate2021.github.io/fonts/1/sailec.css" rel="stylesheet" type="text/css">
-<link href="https://josephanimate2021.github.io/static/55910a7cd204c37c/go/css/common_combined.css.gz.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/fonts/1/sailec.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/static/55910a7cd204c37c/go/css/common_combined.css.gz.css" rel="stylesheet" type="text/css">
 
-<link href="https://josephanimate2021.github.io/video-player-2015-files/upsell_modals.css" rel="stylesheet" type="text/css">
-<link href="https://josephanimate2021.github.io/video-player-2015-files/watermark.css" rel="stylesheet" type="text/css">
-<link href="https://josephanimate2021.github.io/video-player-2015-files/video.css" rel="stylesheet" type="text/css">
-<link href="https://josephanimate2021.github.io/video-player-2015-files/videos.css" rel="stylesheet" type="text/css">
-<link href="https://josephanimate2021.github.io/video-player-2015-files/video_export.css" rel="stylesheet" type="text/css">
-<link href="https://josephanimate2021.github.io/video-player-2015-files/movie_license.css" rel="stylesheet" type="text/css">
-<link href="https://josephanimate2021.github.io/video-player-2015-files/video_voice_vendor.css" rel="stylesheet" type="text/css">
-<link href="https://josephanimate2021.github.io/video-player-2015-files/bootstrap-tokenfield.min.css" rel="stylesheet" type="text/css">
-<link href="https://josephanimate2021.github.io/video-player-2015-files/bootstrap-tokenfield-addon.css" rel="stylesheet" type="text/css">
-<link href="https://josephanimate2021.github.io/video-player-2015-files/worknote.css" rel="stylesheet" type="text/css">
-<link href="https://josephanimate2021.github.io/static/55910a7cd204c37c/go/css/video.css.gz.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/upsell_modals.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/watermark.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/video.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/videos.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/video_export.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/movie_license.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/video_voice_vendor.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/bootstrap-tokenfield.min.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/bootstrap-tokenfield-addon.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/worknote.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/static/55910a7cd204c37c/go/css/video.css.gz.css" rel="stylesheet" type="text/css">
 <!--[if lt IE 9]>
 <style text="text/css">
 .top-nav.collapse {height: auto;overflow: visible;}
@@ -123,25 +129,25 @@ module.exports = function (req, res, url) {
 var srv_tz_os = -5, view_name = "go", user_cookie_name = "u_info";
 </script>
 
-<script src="https://josephanimate2021.github.io/video-player-2015-files/common_combined.js"></script>
-<script type="text/javascript" src="https://josephanimate2021.github.io/video-player-2015-files/goserver_js-en_US.json"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/common_combined.js"></script>
+<script type="text/javascript" src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/goserver_js-en_US.json"></script>
 <script type="text/javascript">
 var I18N_LANG = 'en_US';
 var GT = new Gettext({'locale_data': json_locale_data});
 </script>
 
-<script src="https://josephanimate2021.github.io/video-player-2015-files/jquery.ui.core.min.js"></script>
-<script src="https://josephanimate2021.github.io/video-player-2015-files/jquery.ui.widget.min.js"></script>
-<script src="https://josephanimate2021.github.io/video-player-2015-files/jquery.ui.position.min.js"></script>
-<script src="https://josephanimate2021.github.io/video-player-2015-files/jquery.ui.menu.min.js"></script>
-<script src="https://josephanimate2021.github.io/video-player-2015-files/jquery.ui.autocomplete.min.js"></script>
-<script src="https://josephanimate2021.github.io/video-player-2015-files/bootstrap-tokenfield.min.js"></script>
-<script src="https://josephanimate2021.github.io/video-player-2015-files/trial_upsell.js"></script>
-<script src="https://josephanimate2021.github.io/video-player-2015-files/moment.min.js"></script>
-<script src="https://josephanimate2021.github.io/video-player-2015-files/country-options.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/jquery.ui.core.min.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/jquery.ui.widget.min.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/jquery.ui.position.min.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/jquery.ui.menu.min.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/jquery.ui.autocomplete.min.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/bootstrap-tokenfield.min.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/trial_upsell.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/moment.min.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/country-options.js"></script>
 
 
-<script type="text/javascript" src="https://josephanimate2021.github.io/video-player-2015-files/recaptcha_ajax.js"></script>
+<script type="text/javascript" src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/recaptcha_ajax.js"></script>
 
 <!-- Google Tag Manager -->
 <script>
@@ -308,7 +314,7 @@ var utmUtil = (function() {
     };
 }());
 </script>
-<script src="https://josephanimate2021.github.io/video-player-2015-files/go_amp.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/go_amp.js"></script>
 <script>
 // Page view.
 var utmParameters = utmUtil.getUTMParameters(),
@@ -334,7 +340,7 @@ loginStatus = AMPLITUDE_EVENT_PROPERTIES.NO;amplitudeTrackEvent(
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "VyondRemastered",
-    "url": "https://vyondremastered1.herokuapp.com",
+    "url": "http://localhost:4343/",
     "logo": "https://gawpstorage.s3.amazonaws.com/img/google_knowledge_graph_logo.jpg",
     "sameAs": [
         "https://www.facebook.com/GoAnimateInc",
@@ -389,8 +395,8 @@ if (self !== top) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="http://localhost:4343/pages/html/ga.vyond.com/yourvideos" title="Vyond">
-                      <img alt="Vyond" src="https://web.archive.org/web/20210328224445if_/https://d3v4eglovri8yt.cloudfront.net/static/add8e214e09bd155/go/img/vyond/vyond_logo_legacy.png">
+                  <a class="navbar-brand" href="/" title="Vyond">
+                      <img alt="Vyond" src="https://web.archive.org/web/20220215235646im_/https://d3v4eglovri8yt.cloudfront.net/static/add8e214e09bd155/go/img/vyond/vyond_logo_legacy.png">
                   </a>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -412,8 +418,8 @@ if (self !== top) {
     </ul>
 </li>
                     <li>
-                        <a class="hidden-sm hidden-md hidden-lg" href="http://localhost:4343/pages/html/ga.vyond.com/videomaker">Make a Video</a>
-                        <span class="site-nav-btn hidden-xs"><a class="btn btn-orange" href="http://localhost:4343/pages/html/ga.vyond.com/videomaker">Make a Video</a></span>
+                        <a class="hidden-sm hidden-md hidden-lg" href="/pages/html/ga.vyond.com/videomaker">Make a Video</a>
+                        <span class="site-nav-btn hidden-xs"><a class="btn btn-orange" href="/pages/html/ga.vyond.com/videomaker">Make a Video</a></span>
                     </li>
 <li class="dropdown">
     <a class="dropdown-toggle" href="https://ga.vyond.com/account?_ga=2.15274102.1991779285.1608744997-274477995.1607549653" data-toggle="dropdown" aria-expanded="false">
@@ -471,7 +477,7 @@ function playerLoaded() {
 };
 jQuery('#playerdiv').flash({
     id: "Player",
-    swf: "https://localhost:4664/animation/414827163ad4eb60/player.swf",
+    swf: "${params.flashvars.animationPath}player.swf",
     height: 539,
     width: 958,
     bgcolor: "#000000",
@@ -509,7 +515,7 @@ jQuery('#player-overlay-dismiss').click(function() {
                                     <div class="list-container">
                                         <div class="panel-info">
                                             Want to use a brand new logo?<br>
-                                            <a href="https://josephanimate2021.github.io/account/logo">
+                                            <a href="https://grapzmen-goanimation.github.io/josephanimate2021/account/logo">
                                                 Go to Account settings &gt;
                                             </a>
                                         </div>
@@ -547,13 +553,13 @@ jQuery('#player-overlay-dismiss').click(function() {
 <div class="video-top">
 
     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject">
-        <link itemprop="url" href="https://josephanimate2021.github.io/Dhar-Mann-Video-Archives/RUDE CASHIER Won’t Sell To KID - DELETING AFTER 48 HOURS!! | Dhar Mann/styles/vyond/watch">
-        <meta itemprop="name" content="RUDE CASHIER Won’t Sell To KID">
+        <link itemprop="url" href="https://grapzmen-goanimation.github.io/josephanimate2021/Dhar-Mann-Video-Archives/RUDE CASHIER Won?t Sell To KID - DELETING AFTER 48 HOURS!! | Dhar Mann/styles/vyond/watch">
+        <meta itemprop="name" content="RUDE CASHIER Won?t Sell To KID">
         <meta itemprop="description" content=" SHOP MERCH here: shop.dharmann.com">
         <meta itemprop="duration" content="PT0H0M3S">
-        <meta itemprop="thumbnailUrl" content="https://josephanimate2021.github.io/Dhar-Mann-Video-Archives/RUDE CASHIER Won’t Sell To KID - DELETING AFTER 48 HOURS!! | Dhar Mann/images/5btJhbxqTdY.png">
+        <meta itemprop="thumbnailUrl" content="https://grapzmen-goanimation.github.io/josephanimate2021/Dhar-Mann-Video-Archives/RUDE CASHIER Won?t Sell To KID - DELETING AFTER 48 HOURS!! | Dhar Mann/images/5btJhbxqTdY.png">
         <meta itemprop="uploadDate" content="2021-12-14T19:37:10-0500">
-        <meta itemprop="embedURL" content="https://josephanimate2021.github.io/Dhar-Mann-Video-Archives/RUDE CASHIER Won’t Sell To KID - DELETING AFTER 48 HOURS!! | Dhar Mann/styles/vyond/embed">
+        <meta itemprop="embedURL" content="https://grapzmen-goanimation.github.io/josephanimate2021/Dhar-Mann-Video-Archives/RUDE CASHIER Won?t Sell To KID - DELETING AFTER 48 HOURS!! | Dhar Mann/styles/vyond/embed">
         <meta itemprop="playerType" content="HTML5 Flash">
         <meta itemprop="videoQuality" content="HD">
         <meta itemprop="height" content="720">
@@ -573,7 +579,7 @@ jQuery('#player-overlay-dismiss').click(function() {
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button class="close" type="button" data-dismiss="modal" aria-hidden="true">×</button>
+                        <button class="close" type="button" data-dismiss="modal" aria-hidden="true">?</button>
                         <h3 class="modal-title">Your video was autosaved</h3>
                     </div>
                     <div class="modal-body">
@@ -608,7 +614,7 @@ jQuery('#player-overlay-dismiss').click(function() {
             <div class="settings-row">
                     <div class="row">
                         <div class="col-sm-6">
-                            <img class="portrait portrait-tiny img-circle" src="/pages/img/addprofile.jpg" alt="">
+                            <img class="portrait portrait-tiny img-circle" src="" alt="">
                         </div>
                         <div class="col-sm-6 socials-icons">
                             <ul class="socials-sharing">
@@ -759,7 +765,7 @@ jQuery('#player-overlay-dismiss').click(function() {
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button class="close" type="button" data-dismiss="modal" aria-hidden="true">×</button>
+                        <button class="close" type="button" data-dismiss="modal" aria-hidden="true">?</button>
                         <h3 class="modal-title">Your video was autosaved</h3>
                     </div>
                     <div class="modal-body">
@@ -832,9 +838,9 @@ function logAmplitudeEvent(eventName, eventProperties) {
         );
 </script>
 
-<script src="https://josephanimate2021.github.io/video-player-2015-files/users.js"></script>
-<script src="https://josephanimate2021.github.io/video-player-2015-files/video.js"></script>
-<script src="https://josephanimate2021.github.io/video-player-2015-files/videos.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/users.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/video.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/video-player-2015-files/videos.js"></script>
 
 
 
