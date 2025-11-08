@@ -23,7 +23,7 @@ module.exports = function (req, res, url) {
 
 	var attrs, params, title;
 	switch (url.pathname) {
-		case '/charactercreator/new_char/': {
+		case '/cc': {
 			title = 'The Character Creator from Vyond - Make a Character Online!';
 			attrs = {	
 				data: process.env.SWF_URL + '/cc.swf', // data: 'cc.swf',
@@ -65,10 +65,10 @@ module.exports = function (req, res, url) {
 
 <link rel="canonical" href="https://vyondremastered1.herokuapp.com/yourvideos">
 
-<link href="https://josephanimate2021.github.io/fonts/1/sailec.css" rel="stylesheet" type="text/css">
-<link href="https://josephanimate2021.github.io/static/55910a7cd204c37c/go/css/common_combined.css.gz.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/fonts/1/sailec.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/static/55910a7cd204c37c/go/css/common_combined.css.gz.css" rel="stylesheet" type="text/css">
 
-<link href="https://josephanimate2021.github.io/static/55910a7cd204c37c/go/css/cc.css.gz.css" rel="stylesheet" type="text/css">
+<link href="https://grapzmen-goanimation.github.io/josephanimate2021/static/55910a7cd204c37c/go/css/cc.css.gz.css" rel="stylesheet" type="text/css">
 <!--[if lt IE 9]>
 <style text="text/css">
 .top-nav.collapse {height: auto;overflow: visible;}
@@ -80,15 +80,15 @@ var srv_tz_os = -4, view_name = "go", user_cookie_name = "u_info";
 var user_role = 11;
 </script>
 
-<script src="https://josephanimate2021.github.io/static/55910a7cd204c37c/go/js/common_combined.js.gz.js"></script>
-<script type="text/javascript" src="https://josephanimate2021.github.io/static/55910a7cd204c37c/go/js/../po/goserver_js-en_US.json.gz.json"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/static/55910a7cd204c37c/go/js/common_combined.js.gz.js"></script>
+<script type="text/javascript" src="https://grapzmen-goanimation.github.io/josephanimate2021/static/55910a7cd204c37c/go/js/../po/goserver_js-en_US.json.gz.json"></script>
 <script type="text/javascript">
 var I18N_LANG = 'en_US';
 var GT = new Gettext({'locale_data': json_locale_data});
 </script>
 
-<script src="https://josephanimate2021.github.io/static/55910a7cd204c37c/go/js/sessionChecker.js.gz.js"></script>
-<script src="https://josephanimate2021.github.io/static/55910a7cd204c37c/go/js/amplitude/go_amp.js.gz.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/static/55910a7cd204c37c/go/js/sessionChecker.js.gz.js"></script>
+<script src="https://grapzmen-goanimation.github.io/josephanimate2021/static/55910a7cd204c37c/go/js/amplitude/go_amp.js.gz.js"></script>
 
 <!-- Vyond Cookie Consent -->
 <script>(function(v,y,o,n){v[n]=v[n]||[];
@@ -162,7 +162,8 @@ if (self !== top) {
             <a href="https://support.vyond.com" onclick="amplitudeTrackCtaHelp('help_center');" target="_blank">Help Center</a>
         </li>
         <li>
-            <a href="https://product.vyond.com/" onclick="amplitudeTrackCtaHelp('whats_new');" target="_blank">What's New   </a>
+            
+<a href="https://product.vyond.com/" onclick="amplitudeTrackCtaHelp('whats_new');" target="_blank">What's New   </a><a href="http://localhost:4343/charactercreator/new_char/?themeId=family&amp;bs=adam" onclick="amplitudeTrackCtaHelp('whats_new');" target="_blank">Inspect Element!   </a>
         </li>
     </ul>
 </li>
@@ -210,7 +211,7 @@ if (self !== top) {
 <script>
 jQuery('#char_creator_client').flash({
    id: "char_creator",
-   swf: "https://josephanimate2021.github.io/animation/414827163ad4eb60/cc.swf",
+   swf: "https://ga.vyond.com/static/animation/cc.swf",
    height: 600,
    width: 960,
 
@@ -305,4 +306,3 @@ $(window).on('amplitude_loaded', function() {
 		);
 	return true;
 }
-
